@@ -2,26 +2,14 @@ package com.revature;
 
 public class LCS {
 
-	public static int LongestCommonSubsequence(String a, String b) {
+	public static void LongestCommonSubsequence(String a, String b) {
 		char[] ac = a.toLowerCase().toCharArray();
 		char[] bc = b.toLowerCase().toCharArray();
 		int al = a.length();
 		int bl = b.length();
-		int lengthR = LCSRecursion(ac, bc, al, bl);
 		int lengthT = LCSTabulation(ac, bc, al, bl);
-		System.out.println("Solved with recursion: " + lengthR + "\nSolved with tabulation: " + lengthT);
-		return lengthR;
-	}
-	
-	private static int LCSRecursion(char[] a, char[] b, int al, int bl) {
-		if(al == 0 || bl == 0) {
-			return 0;
-		}
-		if(a[al-1] == b[bl-1]) {
-			return 1 + LCSRecursion(a, b, al-1, bl-1);
-		} else {
-			return Math.max(LCSRecursion(a,b,al,bl-1), LCSRecursion(a,b,al-1,bl));
-		}
+		System.out.println(a + " and " + b +  " have a longest common subsequence of " + lengthT);
+		return;
 	}
 	
 	private static int LCSTabulation(char[] a, char[] b, int al, int bl) {
